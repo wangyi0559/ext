@@ -14,29 +14,29 @@ COPY --from=builder /usr/bin/v2ray/v2ray /usr/bin/v2ray/
 COPY --from=builder /usr/bin/v2ray/v2ctl /usr/bin/v2ray/
 COPY --from=builder /usr/bin/v2ray/geoip.dat /usr/bin/v2ray/
 COPY --from=builder /usr/bin/v2ray/geosite.dat /usr/bin/v2ray/
-Run echo '{
-  "log" : {
-    "access": "/var/log/v2ray/access.log",
-    "error": "/var/log/v2ray/error.log",
-    "loglevel": "warning"
-  },
-  "inbounds": [{
-    "port": 8001,
-    "protocol": "vmess",
-    "settings": {
-      "clients": [
-        {
-          "id": "60ca58e9-003e-4c01-98de-c2223ae49153",
-          "level": 1,
-          "alterId": 64
-        }
-      ]
-    }
-  }],
-  "outbounds": [{
-    "protocol": "freedom",
-    "settings": {}
-  }]
+Run echo '{ \
+  "log" : { \
+    "access": "/var/log/v2ray/access.log", \
+    "error": "/var/log/v2ray/error.log", \
+    "loglevel": "warning" \
+  }, \
+  "inbounds": [{ \
+    "port": 8001, \
+    "protocol": "vmess", \
+    "settings": { \
+      "clients": [ \
+        { \
+          "id": "60ca58e9-003e-4c01-98de-c2223ae49153", \
+          "level": 1, \
+          "alterId": 64 \
+        } \
+      ] \
+    } \
+  }], \
+  "outbounds": [{ \
+    "protocol": "freedom", \
+    "settings": {} \
+  }] \
 }' > /etc/v2ray/config.json
 
 RUN set -ex && \
